@@ -7,8 +7,8 @@ from discord.ext import commands, tasks
 from systemd import journal
 from datetime import datetime, timedelta
 
-TOKEN = 'MTA5ODMxMDEzNjYwMDIxMTQ4Ng.GkegB9.d8XGy7VOYeYIUlyr5dEStcmBC2dG6sVqCSE5gE'  # Replace with your bot token
-CHANNEL_ID = 1098284777255211048  # Replace with the desired channel ID
+TOKEN = 'bot token'  # Replace with your bot token
+CHANNEL_ID = channelid  # Replace with the desired channel ID
 
 intents = discord.Intents.default()
 intents.typing = False
