@@ -74,21 +74,23 @@ async def on_ready():
 async def on_message(message):
     if message.author == client.user:
         return
-    
+
     if message.content.lower().startswith('!dallas stats'):
         print("Received '!dallas stats' command.")
         stats = get_server_stats()
 
         message_content = (
-            f"Server stats:\n"
-            f"CPU usage: {stats['cpu']}% ({stats['cpu_cores']} cores)\n"
-            f"RAM usage: {stats['ram']}% (Total: {stats['total_ram']:.2f} GB)\n"
-            f"Uptime: {stats['uptime']:.2f} days\n"
-            f"iPXE boots: {stats['ipxe_count']}\n"
-            f"Transfer (GB): sent={stats['transfer']['sent_gb']:.2f}, received={stats['transfer']['recv_gb']:.2f}\n"
-            f"Disk space: {stats['disk_used']:.2f} GB used / {stats['disk_total']:.2f} GB total"
+            f"**CPU usage:** {stats['cpu']}% ({stats['cpu_cores']} cores)\n"
+            f"**RAM usage:** {stats['ram']}% (Total: {stats['total_ram']:.2f} GB)\n"
+            f"**Uptime:** {stats['uptime']:.2f} days\n"
+            f"**iPXE boots:** {stats['ipxe_count']}\n"
+            f"**Transfer (GB):** sent={stats['transfer']['sent_gb']:.2f}, received={stats['transfer']['recv_gb']:.2f}\n"
+            f"**Disk space:** {stats['disk_used']:.2f} GB used / {stats['disk_total']:.2f} GB total"
         )
-
-        await message.channel.send(message_content)
+        embed = discord.Embed(title = "Server Stats:", description = message_content, color = 0xFF5733)
+        embed.set_author (name = "Compudopt", 
+        url = "https://www.compudopt.org/",
+        icon_url = "https://farm66.staticflickr.com/65535/buddyicons/97042305@N04.jpg?1655313897#97042305@N04")
+        await message.channel.send(embed = embed)
 
 client.run(TOKEN)
